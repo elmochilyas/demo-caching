@@ -29,6 +29,8 @@ use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransportFactory;
 use Symfony\Component\Mailer\Transport\Smtp\Stream\SocketStream;
 
+use function Illuminate\Support\enum_value;
+
 /**
  * @mixin \Illuminate\Mail\Mailer
  */
@@ -59,7 +61,6 @@ class MailManager implements FactoryContract
      * Create a new Mail manager instance.
      *
      * @param  \Illuminate\Contracts\Foundation\Application  $app
-     * @return void
      */
     public function __construct($app)
     {
@@ -69,12 +70,12 @@ class MailManager implements FactoryContract
     /**
      * Get a mailer instance by name.
      *
-     * @param  string|null  $name
+     * @param  \UnitEnum|string|null  $name
      * @return \Illuminate\Contracts\Mail\Mailer
      */
     public function mailer($name = null)
     {
-        $name = $name ?: $this->getDefaultDriver();
+        $name = enum_value($name) ?: $this->getDefaultDriver();
 
         return $this->mailers[$name] = $this->get($name);
     }
@@ -82,7 +83,7 @@ class MailManager implements FactoryContract
     /**
      * Get a mailer driver instance.
      *
-     * @param  string|null  $driver
+     * @param  \UnitEnum|string|null  $driver
      * @return \Illuminate\Mail\Mailer
      */
     public function driver($driver = null)
@@ -313,7 +314,7 @@ class MailManager implements FactoryContract
      * Create an instance of the Resend Transport driver.
      *
      * @param  array  $config
-     * @return \Illuminate\Mail\Transport\ResendTransprot
+     * @return \Illuminate\Mail\Transport\ResendTransport
      */
     protected function createResendTransport(array $config)
     {
@@ -365,13 +366,16 @@ class MailManager implements FactoryContract
         $factory = new PostmarkTransportFactory(null, $this->getHttpClient($config));
 
         $options = isset($config['message_stream_id'])
-                    ? ['message_stream' => $config['message_stream_id']]
-                    : [];
+            ? ['message_stream' => $config['message_stream_id']]
+            : [];
 
         return $factory->create(new Dsn(
             'postmark+api',
             'default',
-            $config['token'] ?? $this->app['config']->get('services.postmark.token'),
+            $config['token']
+                ?? $config['key']
+                ?? $this->app['config']->get('services.postmark.token')
+                ?? $this->app['config']->get('services.postmark.key'),
             null,
             null,
             $options
@@ -386,24 +390,7 @@ class MailManager implements FactoryContract
      */
     protected function createFailoverTransport(array $config)
     {
-        $transports = [];
-
-        foreach ($config['mailers'] as $name) {
-            $config = $this->getConfig($name);
-
-            if (is_null($config)) {
-                throw new InvalidArgumentException("Mailer [{$name}] is not defined.");
-            }
-
-            // Now, we will check if the "driver" key exists and if it does we will set
-            // the transport configuration parameter in order to offer compatibility
-            // with any Laravel <= 6.x application style mail configuration files.
-            $transports[] = $this->app['config']['mail.driver']
-                ? $this->createSymfonyTransport(array_merge($config, ['transport' => $name]))
-                : $this->createSymfonyTransport($config);
-        }
-
-        return new FailoverTransport($transports);
+        return $this->createRoundrobinTransportOfClass($config, FailoverTransport::class);
     }
 
     /**
@@ -413,6 +400,22 @@ class MailManager implements FactoryContract
      * @return \Symfony\Component\Mailer\Transport\RoundRobinTransport
      */
     protected function createRoundrobinTransport(array $config)
+    {
+        return $this->createRoundrobinTransportOfClass($config, RoundRobinTransport::class);
+    }
+
+    /**
+     * Create an instance of supplied class extending the Symfony Roundrobin Transport driver.
+     *
+     * @template TClass of \Symfony\Component\Mailer\Transport\RoundRobinTransport
+     *
+     * @param  array  $config
+     * @param  class-string<TClass>  $class
+     * @return TClass
+     *
+     * @throws \InvalidArgumentException
+     */
+    protected function createRoundrobinTransportOfClass(array $config, string $class)
     {
         $transports = [];
 
@@ -431,7 +434,7 @@ class MailManager implements FactoryContract
                 : $this->createSymfonyTransport($config);
         }
 
-        return new RoundRobinTransport($transports);
+        return new $class($transports, $config['retry_after'] ?? 60, $this->app->make(LoggerInterface::class));
     }
 
     /**
@@ -551,12 +554,12 @@ class MailManager implements FactoryContract
     /**
      * Disconnect the given mailer and remove from local cache.
      *
-     * @param  string|null  $name
+     * @param  \UnitEnum|string|null  $name
      * @return void
      */
     public function purge($name = null)
     {
-        $name = $name ?: $this->getDefaultDriver();
+        $name = enum_value($name) ?: $this->getDefaultDriver();
 
         unset($this->mailers[$name]);
     }
