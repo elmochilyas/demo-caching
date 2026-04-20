@@ -9,10 +9,12 @@ async function fetchWithTiming(url) {
     };
 }
 
+const API_BASE = '/caching/public/api';
+
 async function loadPhotos() {
     const [uncached, cached] = await Promise.all([
-        fetchWithTiming('/api/photos-uncached'),
-        fetchWithTiming('/api/photos-cached')
+        fetchWithTiming(`${API_BASE}/photos-uncached`),
+        fetchWithTiming(`${API_BASE}/photos-cached`)
     ]);
     
     updatePhotosDisplay(uncached, cached);
@@ -67,8 +69,8 @@ async function loadUV() {
     const lng = document.getElementById('uncached-lng').value || '-0.11';
     
     const [uncached, cached] = await Promise.all([
-        fetchWithTiming(`/api/weather-uncached?lat=${lat}&lng=${lng}`),
-        fetchWithTiming(`/api/weather-cached?lat=${lat}&lng=${lng}`)
+        fetchWithTiming(`${API_BASE}/weather-uncached?lat=${lat}&lng=${lng}`),
+        fetchWithTiming(`${API_BASE}/weather-cached?lat=${lat}&lng=${lng}`)
     ]);
     
     updateUVDisplay(uncached, cached);
@@ -119,7 +121,7 @@ function updateUVDisplay(uncached, cached) {
 
 async function clearCache() {
     try {
-        await fetch('/api/clear-cache', { method: 'POST' });
+        await fetch(`${API_BASE}/clear-cache`, { method: 'POST' });
         alert('Cache cleared. Reload the page.');
         location.reload();
     } catch (error) {

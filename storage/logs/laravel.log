@@ -112,3 +112,118 @@ operable program or batch file.
 #14 C:/xampp/htdocs/caching/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
 #15 {main}
 "} 
+[2026-04-20 08:22:21] local.ERROR: Target class [DatabaseSeeder] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [DatabaseSeeder] does not exist. at C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/Container.php:961)
+[stacktrace]
+#0 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('DatabaseSeeder')
+#1 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('DatabaseSeeder', Array, true)
+#2 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('DatabaseSeeder', Array)
+#3 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('DatabaseSeeder', Array)
+#4 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(98): Illuminate/Foundation/Application->make('DatabaseSeeder')
+#5 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(70): Illuminate/Database/Console/Seeds/SeedCommand->getSeeder()
+#6 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(155): Illuminate/Database/Console/Seeds/SeedCommand->Illuminate/Database/Console/Seeds/{closure}()
+#7 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(69): Illuminate/Database/Eloquent/Model::unguarded(Object(Closure))
+#8 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Database/Console/Seeds/SeedCommand->handle()
+#9 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#10 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#11 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#12 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#13 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#14 C:/xampp/htdocs/caching/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#15 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#16 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(68): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#17 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(29): Illuminate/Console/Command->runCommand('db:seed', Array, Object(Illuminate/Console/OutputStyle))
+#18 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/FreshCommand.php(122): Illuminate/Console/Command->call('db:seed', Array)
+#19 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/FreshCommand.php(98): Illuminate/Database/Console/Migrations/FreshCommand->runSeeder(NULL)
+#20 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Database/Console/Migrations/FreshCommand->handle()
+#21 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#22 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#23 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#24 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#25 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#26 C:/xampp/htdocs/caching/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#27 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#28 C:/xampp/htdocs/caching/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#29 C:/xampp/htdocs/caching/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Database/Console/Migrations/FreshCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#30 C:/xampp/htdocs/caching/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#31 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#32 C:/xampp/htdocs/caching/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#33 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"DatabaseSeeder\" does not exist at C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/Container.php:959)
+[stacktrace]
+#0 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/Container.php(959): ReflectionClass->__construct('DatabaseSeeder')
+#1 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('DatabaseSeeder')
+#2 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('DatabaseSeeder', Array, true)
+#3 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('DatabaseSeeder', Array)
+#4 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('DatabaseSeeder', Array)
+#5 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(98): Illuminate/Foundation/Application->make('DatabaseSeeder')
+#6 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(70): Illuminate/Database/Console/Seeds/SeedCommand->getSeeder()
+#7 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php(155): Illuminate/Database/Console/Seeds/SeedCommand->Illuminate/Database/Console/Seeds/{closure}()
+#8 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php(69): Illuminate/Database/Eloquent/Model::unguarded(Object(Closure))
+#9 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Database/Console/Seeds/SeedCommand->handle()
+#10 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#11 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#12 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#13 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#14 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#15 C:/xampp/htdocs/caching/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#16 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#17 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(68): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#18 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(29): Illuminate/Console/Command->runCommand('db:seed', Array, Object(Illuminate/Console/OutputStyle))
+#19 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/FreshCommand.php(122): Illuminate/Console/Command->call('db:seed', Array)
+#20 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/FreshCommand.php(98): Illuminate/Database/Console/Migrations/FreshCommand->runSeeder(NULL)
+#21 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Database/Console/Migrations/FreshCommand->handle()
+#22 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#23 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#24 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#25 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#26 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#27 C:/xampp/htdocs/caching/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#28 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#29 C:/xampp/htdocs/caching/vendor/symfony/console/Application.php(1117): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#30 C:/xampp/htdocs/caching/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Database/Console/Migrations/FreshCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#31 C:/xampp/htdocs/caching/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#32 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#33 C:/xampp/htdocs/caching/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#34 {main}
+"} 
+[2026-04-20 08:22:47] local.ERROR: Command "tinker" is not defined. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"tinker\" is not defined. at C:/xampp/htdocs/caching/vendor/symfony/console/Application.php:759)
+[stacktrace]
+#0 C:/xampp/htdocs/caching/vendor/symfony/console/Application.php(298): Symfony/Component/Console/Application->find('tinker')
+#1 C:/xampp/htdocs/caching/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#2 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#3 C:/xampp/htdocs/caching/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#4 {main}
+"} 
+[2026-04-20 08:22:55] local.ERROR: Command "inspire" is not defined. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"inspire\" is not defined. at C:/xampp/htdocs/caching/vendor/symfony/console/Application.php:759)
+[stacktrace]
+#0 C:/xampp/htdocs/caching/vendor/symfony/console/Application.php(298): Symfony/Component/Console/Application->find('inspire')
+#1 C:/xampp/htdocs/caching/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#2 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#3 C:/xampp/htdocs/caching/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#4 {main}
+"} 
+[2026-04-20 08:23:53] local.ERROR: Command "db:query" is not defined.
+
+Did you mean one of these?
+    db
+    db:monitor
+    db:seed
+    db:show
+    db:table
+    db:wipe {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"db:query\" is not defined.
+
+Did you mean one of these?
+    db
+    db:monitor
+    db:seed
+    db:show
+    db:table
+    db:wipe at C:/xampp/htdocs/caching/vendor/symfony/console/Application.php:759)
+[stacktrace]
+#0 C:/xampp/htdocs/caching/vendor/symfony/console/Application.php(298): Symfony/Component/Console/Application->find('db:query')
+#1 C:/xampp/htdocs/caching/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#2 C:/xampp/htdocs/caching/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#3 C:/xampp/htdocs/caching/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#4 {main}
+"} 
